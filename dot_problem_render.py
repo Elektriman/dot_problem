@@ -41,8 +41,7 @@ def draw_path(path, ax):
 def draw_one(path):
     N = len(path)
     fig, ax = plt.subplots()
-    ax.set_xlim(-1,N)
-    ax.set_ylim(-N//2 - 1, N//2 + 1)
+    ax.set_xlim(-0.5,N-0.5)
     draw_dots(N, ax)
     draw_path(path, ax)
     plt.show()
@@ -55,8 +54,7 @@ def draw_all(paths):
         for j in range(n_cols):
             ax[i,j].axis('off')
             if i*n_cols+j < len(paths) :
-                ax[i,j].set_xlim(-1,N)
-                ax[i,j].set_ylim(-N//2 - 1, N//2 + 1)
+                ax[i,j].set_xlim(-0.5,N-0.5)
                 draw_dots(N, ax[i,j])
                 draw_path(paths[i*n_cols+j], ax[i,j])
     plt.show()
@@ -69,5 +67,6 @@ def display_arr(M):
     return (b,a)
 
 if __name__ == '__main__' :
-    paths = dot_problem.get_paths(7)
+    paths = dot_problem.get_paths(5)
     draw_all(paths)
+    # draw_one(paths[0])
