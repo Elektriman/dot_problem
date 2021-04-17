@@ -4,9 +4,6 @@ Created on Sat Apr 17 15:25:50 2021
 
 @author: Julien
 """
-"""
-Thanks ! Also, I was able to make a renderer that just plots every path possible for a number of dots. It may be usefull if you wanna compare your man
-"""
 
 #imports
 import numpy as np
