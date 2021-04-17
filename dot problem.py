@@ -160,8 +160,8 @@ def show(N, show_list=False):
     """
     path_tree_filled.set_N(N) #setting N
     
-    trees = [] #each strting point has its own tree of possible paths
-    for i in range(N//2): #going untill N//2 because
+    trees = [] #each starting point has its own tree of possible paths
+    for i in range(N//2): #going untill N//2 to avoid computing the same paths
         trees.append(path_tree_filled(i, []))
         
     final_list = path_tree_filled.sort_paths()
