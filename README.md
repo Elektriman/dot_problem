@@ -1,4 +1,4 @@
-# dot_problem
+# dot problem
 this is a proposition for a python implementation of a program that will search for available path to solve what i call very unoriginally "the dot problem". 
 This has been made in the context of the folowing reddit post : https://www.reddit.com/r/numberphile/comments/ms24cn/does_this_dot_path_puzzlesequencewhatever_exist/
 
@@ -27,3 +27,6 @@ be carefull, this code is not optimised to be fast and it has hard time when you
 I have tried to optimise it with mumba (using the @jit(nopython=True) decorator) but i got no results.
 If you know how to do it feel free to make a pull request and/or contact me.
 This code is under no Licence. It is free to use for any purpose.
+
+the renderer have been made a few hours after the first program.
+It plots all the paths in a grid to optimise screen space and avoid having a very tall or a very large plot of either one row or column.
