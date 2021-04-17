@@ -2,6 +2,7 @@
 this is a proposition for a python implementation of a program that will search for available path to solve what i call very unoriginally "the dot problem". 
 This has been made in the context of the folowing reddit post : https://www.reddit.com/r/numberphile/comments/ms24cn/does_this_dot_path_puzzlesequencewhatever_exist/
 
+by u/booker_vincent :
 """
 Does this dot path puzzle/sequence/whatever exist somewhere?
 
