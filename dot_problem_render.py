@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Arc
 import dot_problem
 
+
+#--------------------functions used in the main display functions--------------------
+
 def draw_link(a, b, lvl, ax):
     """
     a functions that will draw the arc between two points a and b on the object ax
@@ -25,7 +28,7 @@ def draw_link(a, b, lvl, ax):
             • -0.5 means the same but the line will go under the set of points
     ax : matplotlib.axes
         the axis object on which to plot the ellipsis
-        also, the matplitlib.patches.Arc function needs to be plotted on an axis object as specified on the documentation
+        also, the matplotlib.patches.Arc function needs to be plotted on an axis object as specified on the documentation
     """
     center = (a+b)/2,0 #the center of the ellipsis
     width = abs(a-b) #the width of the ellipsis
@@ -33,7 +36,7 @@ def draw_link(a, b, lvl, ax):
     angle = 0 #the ellipsis is not rotated
     
     #because the function traces the ellipsis in the trigonometric order
-    #we need to adjust starting and anding angles to trace the correct portion of the ellipsis
+    #we need to adjust starting and ending angles to trace the correct portion of the ellipsis
     
     if lvl>0 : #if the curve goes over
         theta1 = 0
@@ -47,7 +50,8 @@ def draw_link(a, b, lvl, ax):
 
 def draw_dots(N, ax):
     """
-    draw the dots for the problem
+    draw the dots aligned on the y=0 axis
+    each dot will have its value as its x coordinate for simplicity
 
     Parameters
     ----------
@@ -73,8 +77,33 @@ def draw_path(path, ax):
     for i in range(len(path)-1):
         a,b = path[i],path[i+1] #recovering the abscisses
         lvl = abs(a-b)*0.5*up #computing a level following how far the two points are appart
+        #this means that two points further appart will be linked by a wider ellipsis
         draw_link(a, b, lvl, ax) #draw the link
         up*=-1 #reverse the side
+
+def display_arr(M):
+    """
+    computes the best way to display M figures on a screen in a grid that is as close to a square as possible
+
+    Parameters
+    ----------
+    M : int
+        the number of subplots to display.
+
+    Returns
+    -------
+    a,b : (int,int)
+        the tuple of (rows,columns) that are optimised to display M plots close to a square shape
+
+    """
+    a = int(np.sqrt(M)) #takin the floor of the square root
+    #a² must be just below M, or equal if M is a perfect square number
+    b = a
+    while a*b <= M : #incrementing the number of rows untill we can fit everything
+        b+=1 
+    return (b,a)
+
+#--------------------main display functions--------------------
 
 def draw_one(path):
     """
@@ -83,7 +112,7 @@ def draw_one(path):
     Parameters
     ----------
     path : list
-        the list of integers that represent the path to display.
+        the list of integers that represent a path to display.
     """
     N = len(path)
     
@@ -118,29 +147,10 @@ def draw_all(paths):
                 draw_path(paths[i*n_cols+j], ax[i,j])
     plt.show()
 
-def display_arr(M):
-    """
-    computes the best way to display M figures on a screen in a grid that is as close to a square as possible
-
-    Parameters
-    ----------
-    M : int
-        the number of subplots to display.
-
-    Returns
-    -------
-    a,b : (int,int)
-        the tuple of (rows,columns) that are optimised to display M plots close to a square shape
-
-    """
-    a = int(np.sqrt(M)) #takin the floor of the square root
-    #a² must be just below M, or equal if M is a perfect square number
-    b = a
-    while a*b <= M : #incrementing the number of rows untill we can fit everything
-        b+=1 
-    return (b,a)
-
+#--------------------test zone--------------------
+    
 if __name__ == '__main__' :
-    paths = dot_problem.get_paths(5)
+    N = 5 #number of dots
+    paths = dot_problem.get_paths(N) #using the other script to get the paths
     draw_all(paths)
     # draw_one(paths[0])
