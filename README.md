@@ -28,5 +28,5 @@ I have tried to optimise it with mumba (using the @jit(nopython=True) decorator)
 If you know how to do it feel free to make a pull request and/or contact me.
 This code is under no Licence. It is free to use for any purpose.
 
-the renderer have been made a few hours after the first program.
+the renderer has been made a few hours after the dot_problem.py program.
 It plots all the paths in a grid to optimise screen space and avoid having a very tall or a very large plot of either one row or column.
