@@ -24,4 +24,5 @@ I find it hard to believe that I'm the only one who has discovered this puzzle, 
 
 be carefull, this code is not optimised to be fast and it has hard time when you start going above a value of 9 points.
 I have tried to optimise it with mumba (using the @jit(nopython=True) decorator) but i got no results.
-If you know how to do it i would be glad to to see how you make it.
+If you know how to do it feel free to make a pull request and/or contact me.
+This code is under no Licence. It is free to use for any purpose.
